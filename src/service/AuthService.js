@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class AuthService {
-    baseUrl = "https://blogmismanualidadesb.herokuapp.com";
+    baseUrl = "https://blogmismanualidadesb.herokuapp.com/api/auth/";
 
     login(email, contrasenia) {
         return axios
