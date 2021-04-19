@@ -2,7 +2,7 @@ import axios from 'axios';
 import authHeader from './auth-header';
 
 class ComentarioService {
-    baseUrl = "http://localhost:8080";
+    baseUrl = "https://blogmismanualidadesb.herokuapp.com";
 
     getComentariosPost(idPost) {
         return axios.get(this.baseUrl + "/wsComentariosPost/" + idPost).then(res => res.data);

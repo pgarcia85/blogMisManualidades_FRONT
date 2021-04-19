@@ -2,7 +2,7 @@ import axios from 'axios';
 import authHeader from './auth-header';
 
 class PostService {
-    baseUrl = "http://localhost:8080";
+    baseUrl = "https://blogmismanualidadesb.herokuapp.com";
     getAll() {
         return axios.get(this.baseUrl + "/wslistaPost")
             .then(res => res.data);
