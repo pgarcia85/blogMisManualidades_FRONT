@@ -4,7 +4,7 @@ import authHeader from './auth-header';
 class PostService {
     baseUrl = "http://localhost:8080";
     getAll() {
-        return axios.get(this.baseUrl + "/wslistaPost")
+        return axios.get(this.baseUrl + "/wslistaPost", { headers: authHeader() })
             .then(res => res.data);
 
     }
@@ -15,8 +15,16 @@ class PostService {
     }
 
     eliminarPost(idpost) {
-        const p = authHeader();
         return axios.post(this.baseUrl + "/wsEliminarPost/" + idpost, { headers: authHeader() });
+    }
+
+    modificarPost(idpost, titulo, resumen, texto) {
+        return axios.post(this.baseUrl + "/wsPostUpdate/", {
+            idpost,
+            titulo,
+            resumen,
+            texto
+        }, { headers: authHeader() });
     }
 
     guardaPost(titulo, resumen, texto) {

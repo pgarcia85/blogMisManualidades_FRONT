@@ -56,7 +56,7 @@ export default class Comentarios extends React.Component {
                         
                     </div>
         }else{
-            boton = <div className="col-md-1"></div>
+            boton = <div className="col-1"></div>
         }
         return  boton;
     }
@@ -104,17 +104,18 @@ export default class Comentarios extends React.Component {
                 {
                     this.state.comentarios.map((comentario) => {
                         return (
-                            <div key={comentario.idComentario}  className="d-flex flex-column col-md-12 p-1">
+                            <div key={comentario.idComentario}  className="d-flex flex-column col-md-12 col-sm-12 p-1 border-bottom">
                                 
-                                <div className="col-md-12">{comentario.texto}</div>
+                                <div className="col-md-12 col-sm-12">{comentario.texto}</div>
                                 <div className="d-flex">
                                     {this.mostrarIconoBorrar(usuario,rol_administrador, comentario.idComentario)}
-                                    <div className="col-md-2">{comentario.fechaCreacion}</div>
-                                    <div className="col-md-2"><strong>{comentario.nombreUsuario}</strong></div>
+                                    <div className="col-auto">{comentario.fechaCreacion}</div>
+                                    <div className="col-auto"><strong>{comentario.nombreUsuario}</strong></div>
                                 </div>
                                
                             
                             </div>
+
                         )
                     })
                  

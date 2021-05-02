@@ -17,6 +17,7 @@ import NuevoPost from './componentes/NuevoPost';
 import ListaPostsFavoritos from './componentes/ListaPostsFavoritos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser} from '@fortawesome/free-solid-svg-icons';
+import ModificarPost from './componentes/ModificarPost';
 
 export default class App extends React.Component {
 
@@ -52,8 +53,8 @@ export default class App extends React.Component {
             <Cabecera />
             {usuarioActual.usuarioActual ? (
 
-                <Nav className="justify-content-end" >
-                    <NavDropdown title={usuarioActual.usuarioActual.nombre} id="nav-dropdown">
+                <Nav className="justify-content-end" bg="light" >
+                    <NavDropdown title={usuarioActual.usuarioActual.nombre} id="nav-dropdown" className="color">
                         <NavDropdown.Item  href={"/datosPersonales/"+ usuarioActual.usuarioActual.id} >Datos Personales</NavDropdown.Item>
                         <NavDropdown.Item  href={"/favoritos/"+ usuarioActual.usuarioActual.id} >Favoritos</NavDropdown.Item>
                         <NavDropdown.Item  href="/posts" onClick={this.logOut}>Cerrar Sesión</NavDropdown.Item>
@@ -79,7 +80,7 @@ export default class App extends React.Component {
 
                 )}
             <BarraNav />
-
+           
             <BrowserRouter >
                 <Route path="/sobreMi" exact component={SobreMi} />
                 <Route path="/posts" exact component={ListaPosts} />
@@ -90,6 +91,7 @@ export default class App extends React.Component {
                 <Route path="/datosPersonales/:id" exact component={DatosPersonales} />
                 <Route path="/nuevoPost" exact component={NuevoPost} />
                 <Route path="/favoritos/:id" exact component={ListaPostsFavoritos} />
+                <Route path="/modificarPost/:id" exact component={ModificarPost} />
             </BrowserRouter>
             <Pie/>
 
