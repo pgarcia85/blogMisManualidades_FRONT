@@ -4,8 +4,9 @@ import PostService from '../service/PostService';
 import { Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { BrowserRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faTrashAlt, faHeart as corazonSolido, faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
+import {  faTrashAlt, faHeart as corazonSolido, faAngleDoubleRight, faEdit} from '@fortawesome/free-solid-svg-icons';
 import { faHeart as corazonHueco } from '@fortawesome/free-regular-svg-icons';
+
 
 
 export default class Post extends React.Component {
@@ -24,10 +25,16 @@ export default class Post extends React.Component {
         this.esFavorito=this.esFavorito.bind(this);
         this.mostrarIconoFavorito=this.mostrarIconoFavorito.bind(this);
         this.getPost=this.getPost.bind(this);
+        this.mostrarIconoModificarPost=this.mostrarIconoModificarPost.bind(this);
+        this.modificarPost=this.modificarPost.bind(this);
     }
 
     detallePost(id, imagen) {
         this.props.history.push(`/detallePost/${id}`);
+    }
+
+    modificarPost(id){
+        this.props.history.push(`/modificarPost/${id}`);
     }
 
     /**
@@ -109,7 +116,7 @@ export default class Post extends React.Component {
     mostrarIconoBorrarPost(usuario, rolAdmistrador, idPost){
         let boton;
         if(usuario!=null && usuario.roles.includes(rolAdmistrador)){
-            boton = <p id ="iconoBorrarPost"  title="Borrar Post" onClick={() => this.eliminarPost(idPost)} className="mt-5">
+            boton = <span id ="iconoBorrarPost"  title="Borrar Post" onClick={() => this.eliminarPost(idPost)} className="m-1">
                                         <OverlayTrigger
                                             key={'left'}
                                             placement={'left'}
@@ -120,7 +127,28 @@ export default class Post extends React.Component {
                                             }>
                                            <FontAwesomeIcon icon={faTrashAlt} />
                                         </OverlayTrigger>                    
-                    </p>
+                    </span>
+        }
+        return  boton;
+    }
+
+    mostrarIconoModificarPost(usuario, rolAdmistrador, post){
+        let boton;
+        if(usuario!=null && usuario.roles.includes(rolAdmistrador)){
+            boton = 
+                        <span id ="iconoModificarPost"  onClick={() =>this.modificarPost(post.idpost)}  className="m-1">
+                                        <OverlayTrigger
+                                            key={'right'}
+                                            placement={'right'}
+                                            overlay={
+                                            <Tooltip id={'tooltip-left'}>
+                                                Modificar post
+                                            </Tooltip>
+                                            }>
+                                           <FontAwesomeIcon icon={faEdit} />
+                                        </OverlayTrigger>                    
+                        </span>
+                        
         }
         return  boton;
     }
@@ -134,6 +162,7 @@ export default class Post extends React.Component {
         }
         return  corazon;
     }
+
 
     componentDidMount() {
         const usuario = JSON.parse(localStorage.getItem("usuario"));
@@ -184,9 +213,14 @@ export default class Post extends React.Component {
                                         </OverlayTrigger>  
 
 
-                                        </BrowserRouter>
+                                        
+                                        <div className="m-2">
                                         {this.mostrarIconoBorrarPost(usuario,rol_administrador, post.idpost)}
-                                   
+                                       
+                                        {this.mostrarIconoModificarPost(usuario, rol_administrador, post)}
+                                       
+                                        </div>                                      
+                                      </BrowserRouter>
                                 </article>
                             </section>
                         )

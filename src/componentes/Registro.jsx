@@ -27,6 +27,7 @@ export default class Registro extends React.Component {
             telefono: "",
             emmail: "",
             contrasenia: "",
+            //parametros para el mensaje que se muestra en pantalla
             mensaje: "",
             exito: false
         };
@@ -179,7 +180,7 @@ export default class Registro extends React.Component {
                                 onChange={this.onChangeContrasenia}
                                 required/>
                         </Form.Group>
-                        <Button variant="primary" type="submit" style={{
+                        <Button variant="dark" type="submit" style={{
                             'float': 'right'
                         }}>
                             Enviar

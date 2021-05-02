@@ -32,7 +32,7 @@ export default class Post extends React.Component {
         if (post.imagen != null) {
             contenido = 
                 <div className="d-flex flex-column align-items-center mt-4 ">
-                     <div className="d-flex flex-column align-items-center border pt-4">
+                     <div className="d-flex flex-column align-items-center border pt-4 col-12">
                             <h1>{post.titulo}</h1>
                         
                             <h3 className="mt-2">{post.resumen}</h3>

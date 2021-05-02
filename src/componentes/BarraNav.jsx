@@ -17,7 +17,7 @@ export default class BarraNav extends React.Component {
           }
         return (
             
-                <Nav fill variant="tabs" defaultActiveKey="/posts" >
+                <Nav fill variant="tabs" defaultActiveKey="/posts" className="col-auto">
                     <Nav.Item className="border" >
                         <Nav.Link  href="/sobreMi" eventKey="sobreMi" className="color">Un Poco Sobre Mi</Nav.Link>
                     </Nav.Item>
