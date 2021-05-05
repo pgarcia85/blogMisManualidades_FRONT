@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class ContactoService {
-    baseUrl = "http://localhost:8080";
+    baseUrl = "https://blogmismanualidadesb.herokuapp.com";
 
     enviarEmail(nombre, email, asunto, texto) {
         return axios.post(this.baseUrl + "/wsEnviarEmail", {
