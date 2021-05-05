@@ -17,7 +17,7 @@ export default class Post extends React.Component {
             <Image src = {Logo} fluid  style={{
                 display:'block',
                 margin: 'auto'
-            }}/>
+            }} />
             <strong><p className="m-1" style={{
                 textAlign: 'center',
             }}>Blog de manualidades</p></strong>

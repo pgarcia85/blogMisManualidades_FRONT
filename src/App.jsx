@@ -18,6 +18,7 @@ import ListaPostsFavoritos from './componentes/ListaPostsFavoritos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser} from '@fortawesome/free-solid-svg-icons';
 import ModificarPost from './componentes/ModificarPost';
+import Portada from './componentes/Portada';
 
 export default class App extends React.Component {
 
@@ -92,6 +93,7 @@ export default class App extends React.Component {
                 <Route path="/nuevoPost" exact component={NuevoPost} />
                 <Route path="/favoritos/:id" exact component={ListaPostsFavoritos} />
                 <Route path="/modificarPost/:id" exact component={ModificarPost} />
+                <Route path="/" exact component={Portada} />
             </BrowserRouter>
             <Pie/>
 
