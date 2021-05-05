@@ -7,3 +7,7 @@
 .color {
     color: rgb(92, 4, 4);
 }
+
+.barra {
+    padding-right: 0 !important;
+}
