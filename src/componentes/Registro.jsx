@@ -81,7 +81,7 @@ export default class Registro extends React.Component {
             apellidos: "",
             direccion: "",
             telefono: "",
-            emmail: "",
+            email: "",
             contrasenia: ""
         });
     }
@@ -128,6 +128,9 @@ export default class Registro extends React.Component {
                             : "alert alert-danger"
                         }
                         role="alert">
+                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                             </button>
                             {this.state.mensaje}
                         </div>
                     </div>

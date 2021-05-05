@@ -85,7 +85,7 @@ export default class Post extends React.Component {
     render() {
         return (
             <div className="container col-md-12 d-flex justify-content-center">
-            <div className="col-md-8 mt-5">
+            <div className="col-md-8 mt-5 justify-content-center">
 
             {this.state.mensaje && (
                     <div className="form-group">
@@ -94,8 +94,11 @@ export default class Post extends React.Component {
                             ? "alert alert-success"
                             : "alert alert-danger"
                         }
-                        role="alert">
-                            {this.state.mensaje}
+                        role="alert">                          
+                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                             </button>
+                             {this.state.mensaje}
                         </div>
                     </div>
                 )}
