@@ -88,7 +88,9 @@ export default class modificarPost extends React.Component {
                             
                         }
                         role="alert">
-                             <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                             </button>
                             {this.state.mensaje}
                         </div>
                     </div>
