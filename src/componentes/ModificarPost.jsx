@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import PostService from '../service/PostService';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export default class modificarPost extends React.Component {
 
@@ -32,9 +34,9 @@ export default class modificarPost extends React.Component {
         });
     }
 
-    onChangeTexto(e) {
+    onChangeTexto(data) {
         this.setState({
-            texto: e.target.value
+            texto: data
         });
     }
   
@@ -110,18 +112,20 @@ export default class modificarPost extends React.Component {
                                 onChange={this.onChangeResumen}
                                  />
                         </Form.Group>
-                        <Form.Group controlId="texto">
-                            <Form.Label>Texto</Form.Label>
-                            <Form.Control type="text" as="textarea" rows={10}
-                                value={this.state.texto} 
-                                onChange={this.onChangeTexto}
-                               />
-                        </Form.Group>
+                        <CKEditor
+                        editor={ ClassicEditor }
+                        data={this.state.texto}
+                    
+                        onChange={ ( event, editor ) => {
+                            const data = editor.getData();
+                            this.onChangeTexto(data);
+                        } }
+                            />
                       
                      
                         <Button variant="dark" type="submit" style={{
                             'float': 'right'
-                        }}>
+                        }} className="mt-2">
                             Guardar
                         </Button>
                     </Form>

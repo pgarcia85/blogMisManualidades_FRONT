@@ -138,7 +138,7 @@ export default class DatosPersonales extends React.Component {
                                 value={this.state.telefono} 
                                 onChange={this.onChangeTelefono} />
                         </Form.Group>
-                        <Button variant="primary" type="submit" style={{
+                        <Button variant="dark" type="submit" style={{
                             'float': 'right'
                         }}>
                             Modificar

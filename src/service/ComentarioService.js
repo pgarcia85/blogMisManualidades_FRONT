@@ -13,8 +13,7 @@ class ComentarioService {
     }
 
     deleteComentario(idcomentario) {
-        const p = authHeader();
-        return axios.post(this.baseUrl + "/wsEliminarComentario/" + idcomentario, { headers: authHeader() });
+        return axios.delete(this.baseUrl + "/wsEliminarComentario/" + idcomentario, { headers: authHeader() });
     }
 
     getComentario(idcomentario) {

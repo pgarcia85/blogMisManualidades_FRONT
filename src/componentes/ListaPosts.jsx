@@ -1,7 +1,7 @@
 
 import React from 'react';
 import PostService from '../service/PostService';
-import { Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Image, OverlayTrigger, Tooltip, Pagination} from 'react-bootstrap';
 import { BrowserRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faTrashAlt, faHeart as corazonSolido, faAngleDoubleRight, faEdit} from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import { faHeart as corazonHueco } from '@fortawesome/free-regular-svg-icons';
 
 
 
-export default class Post extends React.Component {
+export default class ListaPost extends React.Component {
 
     constructor(props) {
         super(props);
@@ -181,8 +181,18 @@ export default class Post extends React.Component {
         const usuario = JSON.parse(localStorage.getItem("usuario"));
         const rol_administrador= "ROLE_ADMINISTRADOR"; 
         const rol_registrado= "ROLE_REGISTRADO"; 
+        let active=1;
+        let items = [];
+        for (let number = 1; number <= 5; number++) {
+          items.push(
+            <Pagination.Item key={number}>
+              {number}
+            </Pagination.Item>,
+          );
+        }
+
         return (
-           
+ 
             <div className="d-flex flex-column">
                 {
                     this.state.posts.map((post) => {
@@ -226,6 +236,8 @@ export default class Post extends React.Component {
                         )
                     })
                 }
+
+                <Pagination size="sm" className="justify-content-center" >{items}</Pagination>
             </div>
         )
     }

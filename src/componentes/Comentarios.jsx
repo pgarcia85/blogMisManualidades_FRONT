@@ -13,7 +13,9 @@ export default class Comentarios extends React.Component {
         super(props);
         this.state = {
             comentarios: []
+           
         };
+        this.textoComentario= React.createRef();
         this.comentarioService = new ComentarioService();
 
     }
@@ -22,10 +24,13 @@ export default class Comentarios extends React.Component {
         this.comentarioService.saveComentario(this.state.comentario)
         .then(data =>{
             this.state.comentarios.push(data);
-            this.setState({comentarios: this.state.comentarios});
+            this.setState({
+            comentarios: this.state.comentarios
             });
-   
-     
+            });
+      //vaciar el contenido del texto del comentario
+      this.textoComentario.current.value='';
+            
     }
 
     eliminar(idComentario) {
@@ -64,6 +69,7 @@ export default class Comentarios extends React.Component {
     
 
     componentDidMount() {
+        //se llama al servicio para obtener todos los comentarios de un post
         this.comentarioService.getComentariosPost(this.props.idpost)
             .then(data => this.setState({
                  comentarios: data 
@@ -84,7 +90,7 @@ export default class Comentarios extends React.Component {
                     
                             <Form className="col-md-12 d-flex flex-column mt-5">
                                 <Form.Label><h5><strong>Deja un comentario:</strong></h5></Form.Label>
-                                <Form.Control className="col-md-12" as="textarea" rows={3} onChange={(e) => {
+                                <Form.Control ref={this.textoComentario} className="col-md-12" as="textarea" rows={3} onChange={(e) => {
                                     let val = e.target.value;               
                                     this.setState(prevState => {
                                         let comentario = Object.assign({}, prevState.comentario)
