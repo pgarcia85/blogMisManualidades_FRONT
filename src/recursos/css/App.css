@@ -1,13 +1,29 @@
 .App {
     text-align: left;
     background-color: #EAB5EE;
-    color: rgb(92, 4, 4);
+    /* color: rgb(92, 4, 4);*/
+    color: black;
+    font-family: "Lucida Handwriting", cursive;
 }
 
 .color {
-    color: rgb(92, 4, 4);
+    /*color: rgb(92, 4, 4);*/
+    color: black;
 }
 
 .barra {
     padding-right: 0 !important;
+}
+
+a {
+    color: black !important
+}
+
+pre {
+    color: black;
+    font-family: "Lucida Handwriting", cursive !important;
+    white-space: pre;
+    margin: 1em 0;
+    width: 1000px;
+    overflow: auto !important;
 }

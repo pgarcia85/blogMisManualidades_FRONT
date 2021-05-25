@@ -20,6 +20,7 @@ export default class Post extends React.Component {
             }} />
             <strong><p className="m-1" style={{
                 textAlign: 'center',
+                fontSize: '25px'
             }}>Blog de manualidades</p></strong>
             </div>
 

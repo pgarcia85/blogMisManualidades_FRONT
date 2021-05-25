@@ -1,4 +1,5 @@
 import axios from 'axios';
+import authHeader from './auth-header';
 
 class AuthService {
     baseUrl = "https://blogmismanualidadesb.herokuapp.com/api/auth/";
@@ -36,6 +37,14 @@ class AuthService {
 
     getUsuarioActual() {
         return JSON.parse(localStorage.getItem("usuario"));
+    }
+
+    getAllUsuarios() {
+        return axios.get(this.baseUrl + "wsUsuarios", { headers: authHeader() }).then(res => res.data);
+    }
+
+    eliminarUsuario(idUsuario) {
+        return axios.delete(this.baseUrl + "wsEliminarUsuario/" + idUsuario, { headers: authHeader() })
     }
 
 }
