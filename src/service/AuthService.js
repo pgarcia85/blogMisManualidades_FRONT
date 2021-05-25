@@ -1,11 +1,12 @@
 import axios from 'axios';
+import authHeader from './auth-header';
 
 class AuthService {
-    baseUrl = "http://localhost:8080/api/auth/";
+    baseUrl = "http://localhost:8080/";
 
     login(email, contrasenia) {
         return axios
-            .post(this.baseUrl + "singin", {
+            .post(this.baseUrl + "api/auth/singin", {
                 email,
                 contrasenia
             })
@@ -24,7 +25,7 @@ class AuthService {
     }
 
     registrar(nombre, apellidos, direccion, telefono, email, contrasena) {
-        return axios.post(this.baseUrl + "singup", {
+        return axios.post(this.baseUrl + "api/auth/singup", {
             nombre,
             apellidos,
             direccion,
@@ -36,6 +37,14 @@ class AuthService {
 
     getUsuarioActual() {
         return JSON.parse(localStorage.getItem("usuario"));
+    }
+
+    getAllUsuarios() {
+        return axios.get(this.baseUrl + "wsUsuarios", { headers: authHeader() }).then(res => res.data);
+    }
+
+    eliminarUsuario(idUsuario) {
+        return axios.delete(this.baseUrl + "wsEliminarUsuario/" + idUsuario, { headers: authHeader() })
     }
 
 }

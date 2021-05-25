@@ -19,6 +19,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser} from '@fortawesome/free-solid-svg-icons';
 import ModificarPost from './componentes/ModificarPost';
 import Portada from './componentes/Portada';
+import ListaUsuarios from './componentes/ListaUsuarios';
 
 export default class App extends React.Component {
 
@@ -37,8 +38,7 @@ export default class App extends React.Component {
 
         if (usuario) {
             this.setState({
-                usuarioActual: this.authService.getUsuarioActual(),
-                rolRegistrado: usuario.roles.includes("ROLE_REGISTRADO")
+                usuarioActual: this.authService.getUsuarioActual()
             })
         }
     }
@@ -49,16 +49,27 @@ export default class App extends React.Component {
     }
 
     render() {
+        const usuario = this.authService.getUsuarioActual();
         const usuarioActual = this.state;
+        let opcionListaUsuarios;
+        let opcionNuevoPost;
+        if(usuario !=null && usuario.roles.includes("ROLE_ADMINISTRADOR")){
+            opcionListaUsuarios= <NavDropdown.Item  href="/listaUsuarios">Usuarios</NavDropdown.Item>;
+            opcionNuevoPost= <NavDropdown.Item  href="/nuevoPost">Nuevo Post</NavDropdown.Item>;
+       }
+      
         return (<div className="App container" >
             <Cabecera />
             {usuarioActual.usuarioActual ? (
 
                 <Nav className="justify-content-end" bg="light" >
                     <NavDropdown title={usuarioActual.usuarioActual.nombre} id="nav-dropdown" className="color">
+                        {opcionListaUsuarios}
+                        {opcionNuevoPost}
+                        <NavDropdown.Divider />
                         <NavDropdown.Item  href={"/datosPersonales/"+ usuarioActual.usuarioActual.id} >Datos Personales</NavDropdown.Item>
-                        <NavDropdown.Item  href={"/favoritos/"+ usuarioActual.usuarioActual.id} >Favoritos</NavDropdown.Item>
-                        <NavDropdown.Item  href="/posts" onClick={this.logOut}>Cerrar Sesión</NavDropdown.Item>
+                        <NavDropdown.Item  href={"/favoritos/"+ usuarioActual.usuarioActual.id} >Favoritos</NavDropdown.Item>                     
+                        <NavDropdown.Item  href="/posts" onClick={this.logOut}>Cerrar Sesión</NavDropdown.Item>                      
                     </NavDropdown>
                 </Nav>
             ) : (
@@ -93,7 +104,8 @@ export default class App extends React.Component {
                 <Route path="/nuevoPost" exact component={NuevoPost} />
                 <Route path="/favoritos/:id" exact component={ListaPostsFavoritos} />
                 <Route path="/modificarPost/:id" exact component={ModificarPost} />
-                <Route path="/" exact component={Portada} />
+                <Route path="/listaUsuarios" exact component={ListaUsuarios} />
+                <Route path="/" exact component={ListaPosts} />
             </BrowserRouter>
             <Pie/>
 
