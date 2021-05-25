@@ -2,11 +2,11 @@ import axios from 'axios';
 import authHeader from './auth-header';
 
 class AuthService {
-    baseUrl = "https://blogmismanualidadesb.herokuapp.com/api/auth/";
+    baseUrl = "https://blogmismanualidadesb.herokuapp.com/";
 
     login(email, contrasenia) {
         return axios
-            .post(this.baseUrl + "singin", {
+            .post(this.baseUrl + "api/auth/singin", {
                 email,
                 contrasenia
             })
@@ -25,7 +25,7 @@ class AuthService {
     }
 
     registrar(nombre, apellidos, direccion, telefono, email, contrasena) {
-        return axios.post(this.baseUrl + "singup", {
+        return axios.post(this.baseUrl + "api/auth/singup", {
             nombre,
             apellidos,
             direccion,
