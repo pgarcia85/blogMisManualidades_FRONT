@@ -15,7 +15,7 @@ class PostService {
     }
 
     eliminarPost(idpost) {
-        return axios.post(this.baseUrl + "/wsEliminarPost/" + idpost, { headers: authHeader() });
+        return axios.delete(this.baseUrl + "/wsEliminarPost/" + idpost, { headers: authHeader() });
     }
 
     modificarPost(idpost, titulo, resumen, texto) {
@@ -49,7 +49,7 @@ class PostService {
     }
 
     eliminarPostFavorito(idUsuario, idPost) {
-        return axios.post(this.baseUrl + "/wsPostFavoritosEliminar", {
+        return axios.delete(this.baseUrl + "/wsPostFavoritosEliminar", {
             idPost,
             idUsuario
         }, { headers: authHeader() });

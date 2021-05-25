@@ -4,7 +4,7 @@ import PostService from '../service/PostService';
 import { Image } from 'react-bootstrap';
 import Comentarios from './Comentarios';
 
-export default class Post extends React.Component {
+export default class DetallePost extends React.Component {
 
     constructor(props) {
         super(props);
@@ -36,8 +36,7 @@ export default class Post extends React.Component {
                             <h1>{post.titulo}</h1>
                         
                             <h3 className="mt-2">{post.resumen}</h3>
-                            <p className="m-3">{post.texto}</p>
-
+                            <div dangerouslySetInnerHTML={{__html: post.texto}} className="mt-4"/>
                             <Image src={require('../recursos/imagenes/' + post.imagen)} thumbnail className="m-3 col-md-6" />
                 </div>
 

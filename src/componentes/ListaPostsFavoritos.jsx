@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as corazonSolido, faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
 
 
-export default class Post extends React.Component {
+export default class ListaPostFavorito extends React.Component {
 
     constructor(props) {
         super(props);

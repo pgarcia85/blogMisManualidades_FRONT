@@ -171,7 +171,7 @@ export default class Registro extends React.Component {
                         </Form.Group>
                         <Form.Group controlId="telefono">
                             <Form.Label>Telefono</Form.Label>
-                            <Form.Control type="text" placeholder="Intruzca su número de teléfono"
+                            <Form.Control type="number" placeholder="Intruzca su número de teléfono"
                                 value={this.state.telefono}
                                 onChange={this.onChangeTelefono}
                                 required />

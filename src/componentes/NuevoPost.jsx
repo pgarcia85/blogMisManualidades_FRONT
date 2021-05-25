@@ -1,6 +1,8 @@
 import React from 'react';
 import PostService from '../service/PostService';
 import { Form, Button } from 'react-bootstrap';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 export default class NuevoPost extends React.Component {
@@ -33,9 +35,9 @@ export default class NuevoPost extends React.Component {
         });
     }
 
-    onChangeTexto(e) {
+    onChangeTexto(data) {
         this.setState({
-            texto: e.target.value
+            texto: data
         });
     }
 
@@ -60,7 +62,7 @@ export default class NuevoPost extends React.Component {
                         mensaje: response.data.mensaje,
                         exito:true
                     })
-                   // window.location.reload(); hacer una funcion para vaciar los campos
+                   
                 },
                 error => {
                     const resMessage = (error.response && error.response.data &&
@@ -111,15 +113,19 @@ export default class NuevoPost extends React.Component {
                                 onChange={this.onChangeResumen}
                                 required/>
                         </Form.Group>
-                        <Form.Group controlId="texto">
-                            <Form.Label>Texto</Form.Label>
-                            <Form.Control as="textarea" rows={10}
-                                placeholder="Texto del post"
-                                value={this.state.texto}
-                                onChange={this.onChangeTexto}
-                                required />
-                        </Form.Group>
-                        <Button variant="dark" type="submit" className="ml-auto">
+                      
+                        <Form.Label>Texto</Form.Label>
+                        <CKEditor
+                        editor={ ClassicEditor }
+                        data={this.state.texto}                  
+                        onChange={ ( event, editor ) => {
+                            const data = editor.getData();
+                            this.onChangeTexto(data);
+                        } }
+                            />
+
+
+                        <Button variant="dark" type="submit" className="ml-auto mt-2">
                             Guardar
                         </Button>
 
