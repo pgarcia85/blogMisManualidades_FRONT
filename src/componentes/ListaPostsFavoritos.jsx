@@ -24,9 +24,17 @@ export default class ListaPostFavorito extends React.Component {
         this.props.history.push(`/detallePost/${id}`);
     }
 
-    eliminarFavorito(idPost){
-        this.postService.eliminarPostFavorito(this.state.id, idPost);
-        window.location.reload(); 
+    eliminarFavorito(idPost, idUsuario){
+        //elimina el post como favorito
+        this.postService.eliminarPostFavorito(idUsuario,idPost);
+        this.state.posts.map((postFav, index) => {         
+            if(postFav.idpost===idPost){
+                // eliminar el post favorito de la lista
+                this.state.posts.splice(index,1);
+                //asignar la nueva lisa en el state
+               this.setState({posts: this.state.posts});
+            }
+        });
     }
 
     componentDidMount() {     
@@ -37,6 +45,7 @@ export default class ListaPostFavorito extends React.Component {
         }
 
     render() {  
+        const usuario = JSON.parse(localStorage.getItem("usuario"));
         return (
            
             <div className="d-flex flex-column">
@@ -50,7 +59,7 @@ export default class ListaPostFavorito extends React.Component {
                                 
                                 <article className="col-md-6 d-flex flex-column align-items-center" >
                                 <FontAwesomeIcon icon={corazonSolido} className="ml-auto align-self-start m-5" size="lg"
-                                onClick={() =>this.eliminarFavorito(post.idpost)}/>
+                                onClick={() =>this.eliminarFavorito(post.idpost, usuario.id)}/>
                                         <h3>{post.titulo}</h3>
                                        
                                         <p>{post.resumen}</p>
