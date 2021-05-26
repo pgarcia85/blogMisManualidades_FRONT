@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faTrashAlt, faHeart as corazonSolido, faAngleDoubleRight, faEdit} from '@fortawesome/free-solid-svg-icons';
 import { faHeart as corazonHueco } from '@fortawesome/free-regular-svg-icons';
-
+import Paginacion from './Paginacion';
 
 
 export default class ListaPost extends React.Component {
@@ -15,6 +15,8 @@ export default class ListaPost extends React.Component {
         super(props);
         this.state = { posts: [],
                        postsFavoritos: [],
+                       currentPage: 1,
+                       postPerPage: 4
                      };
 
         this.postService = new PostService();
@@ -181,21 +183,17 @@ export default class ListaPost extends React.Component {
         const usuario = JSON.parse(localStorage.getItem("usuario"));
         const rol_administrador= "ROLE_ADMINISTRADOR"; 
         const rol_registrado= "ROLE_REGISTRADO"; 
-        let active=1;
-        let items = [];
-        for (let number = 1; number <= 5; number++) {
-          items.push(
-            <Pagination.Item key={number}>
-              {number}
-            </Pagination.Item>,
-          );
-        }
-
+        const  {currentPage, postPerPage, posts} = this.state;
+        const indexOfLastPost = currentPage * postPerPage;
+        const indexOfFirstPost = indexOfLastPost - postPerPage;
+        const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+        const paginate = pageNum => this.setState({currentPage : pageNum});
+      
         return (
  
-            <div className="d-flex flex-column">
+            <div className="d-flex flex-column align-items-center">
                 {
-                    this.state.posts.map((post) => {
+                    currentPosts.map((post) => {
                         return (
                             <section className="col-md-12 d-flex align-items-center border m-1 p-1" key={post.idpost}>
                                 <aside className="col-md-6">
@@ -236,8 +234,7 @@ export default class ListaPost extends React.Component {
                         )
                     })
                 }
-
-                <Pagination size="sm" className="justify-content-center" >{items}</Pagination>
+            <Paginacion postPerPage={postPerPage} totalPosts={posts.length} paginate={paginate}/>
             </div>
         )
     }
