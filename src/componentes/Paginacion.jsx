@@ -4,7 +4,7 @@ import React from 'react';
 export default class Paginacion extends React.Component {
 
     render(){
-        const{postPerPage, totalPosts, paginate, nextPage, prevPage}= this.props;
+        const{postPerPage, totalPosts, paginate}= this.props;
         const pageNumbers= [];
         let b =Math.ceil(totalPosts/ postPerPage);
         for(let i=1; i<= b; i++){
