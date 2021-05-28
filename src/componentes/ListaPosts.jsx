@@ -155,9 +155,9 @@ export default class ListaPost extends React.Component {
         return  boton;
     }
 
-    mostrarIconoFavorito(usuario, rolRogistrado, idPost){
+    mostrarIconoFavorito(usuario, rolRegistrado, idPost){
         let corazon;
-        if(usuario!=null && usuario.roles.includes(rolRogistrado)){
+        if(usuario!=null && usuario.roles.includes(rolRegistrado)){
             corazon =  <FontAwesomeIcon icon={this.esFavorito(idPost) ? corazonSolido : corazonHueco} 
             className="ml-auto align-self-start m-5" size="lg"
             onClick={() =>this.postFavorito(idPost, usuario.id)}/>
