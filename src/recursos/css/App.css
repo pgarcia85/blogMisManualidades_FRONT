@@ -18,12 +18,3 @@
 a {
     color: black !important
 }
-
-pre {
-    color: black;
-    font-family: "Lucida Handwriting", cursive !important;
-    white-space: pre;
-    margin: 1em 0;
-    width: 1000px;
-    overflow: auto !important;
-}
