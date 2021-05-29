@@ -159,7 +159,7 @@ export default class ListaPost extends React.Component {
         let corazon;
         if(usuario!=null && usuario.roles.includes(rolRegistrado)){
             corazon =  <FontAwesomeIcon icon={this.esFavorito(idPost) ? corazonSolido : corazonHueco} 
-            className="ml-auto align-self-start m-5" size="lg"
+            className="ml-auto align-self-end m-1" size="lg"
             onClick={() =>this.postFavorito(idPost, usuario.id)}/>
         }
         return  corazon;
@@ -195,13 +195,15 @@ export default class ListaPost extends React.Component {
                 {
                     currentPosts.map((post) => {
                         return (
-                            <section className="col-md-12 d-flex align-items-center border m-1 p-1" key={post.idpost}>
-                                <aside className="col-md-6">
+                            <section className="col-12 d-flex align-items-center border m-1 p-1" key={post.idpost}>
+                                <aside className="col-6">
                                     <Image src={require('../recursos/imagenes/' + post.imagen)} thumbnail />
                                 </aside>
                                 
-                                <article className="col-md-6 d-flex flex-column align-items-center" >
-                                        
+                                <article className="col-6 d-flex flex-column align-items-center" >
+
+                                        <p  className="align-self-start"><strong>{post.fechaCreacion}</strong></p> 
+                                       
                                         {this.mostrarIconoFavorito(usuario, rol_registrado, post.idpost)}
                                        
                                         <h3>{post.titulo}</h3>
