@@ -66,7 +66,9 @@ export default class Acceso extends React.Component {
 
     render() {
         return (
-            <div className="d-flex flex-column align-items-center">
+            <div className="container col-12 d-flex flex-column align-items-center" style={{
+                'minHeight': '400px'
+            }}>
                 <div className="col-md-8 mt-5">
                 {this.state.mensaje && (
                             <div className="form-group">
@@ -99,7 +101,7 @@ export default class Acceso extends React.Component {
                                 onChange={this.onChangePassword}
                                 validations={[required]} />
                         </Form.Group>
-                        <a href="/registro" className="color">¿Aun no tienes cuenta? Registrate</a>
+                        <a href="/registro" className="color">¿Aún no tienes cuenta? Registrate pinchando aquí</a>
                         <br></br>
 
                         <Button type="submit" variant="dark"  style={{'float': 'right'}}> Entrar </Button>

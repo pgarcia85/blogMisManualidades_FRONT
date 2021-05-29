@@ -84,7 +84,9 @@ export default class Post extends React.Component {
 
     render() {
         return (
-            <div className="container col-md-12 d-flex justify-content-center">
+            <div className="container col-12 d-flex justify-content-center" style={{
+                'minHeight': '400px'
+            }}>
             <div className="col-md-8 mt-5 justify-content-center">
 
             {this.state.mensaje && (
