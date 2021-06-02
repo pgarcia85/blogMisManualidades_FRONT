@@ -1,7 +1,7 @@
 
 import React from 'react';
 import PostService from '../service/PostService';
-import { Image, OverlayTrigger, Tooltip, Pagination} from 'react-bootstrap';
+import { Image, OverlayTrigger, Tooltip} from 'react-bootstrap';
 import { BrowserRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faTrashAlt, faHeart as corazonSolido, faAngleDoubleRight, faEdit} from '@fortawesome/free-solid-svg-icons';

@@ -2,15 +2,6 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import AuthService from "../service/AuthService";
 
-const required = value => {
-    if (!value) {
-        return (
-            <div className="alert alert-danger" role="Alert">
-                El Campo es obligatorio
-            </div>
-        )
-    }
-}
 
 export default class Acceso extends React.Component {
 
@@ -91,7 +82,8 @@ export default class Acceso extends React.Component {
                                 placeholder="Intruzca su email"
                                 value={this.state.username}
                                 onChange={this.onChangeUsername}
-                                validations={[required]} />
+                                required 
+                                maxLength="45"/>
                         </Form.Group>
                         <Form.Group controlId="contraseña">
                             <Form.Label>Contraseña</Form.Label>
@@ -99,7 +91,8 @@ export default class Acceso extends React.Component {
                                 placeholder="Intruzca su contraseña"
                                 value={this.state.password}
                                 onChange={this.onChangePassword}
-                                validations={[required]} />
+                                required
+                                maxLength="10"/>
                         </Form.Group>
                         <a href="/registro" className="color">¿Aún no tienes cuenta? Registrate pinchando aquí</a>
                         <br></br>

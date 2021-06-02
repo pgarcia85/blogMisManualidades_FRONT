@@ -18,7 +18,6 @@ import ListaPostsFavoritos from './componentes/ListaPostsFavoritos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser} from '@fortawesome/free-solid-svg-icons';
 import ModificarPost from './componentes/ModificarPost';
-import Portada from './componentes/Portada';
 import ListaUsuarios from './componentes/ListaUsuarios';
 
 export default class App extends React.Component {
@@ -63,7 +62,7 @@ export default class App extends React.Component {
             {usuarioActual.usuarioActual ? (
 
                 <Nav className="justify-content-end" bg="light" >
-                    <NavDropdown title={usuarioActual.usuarioActual.nombre} id="nav-dropdown" className="color">
+                    <NavDropdown title={usuarioActual.usuarioActual.email} id="nav-dropdown" className="color">
                         {opcionListaUsuarios}
                         {opcionNuevoPost}
                         <NavDropdown.Divider />

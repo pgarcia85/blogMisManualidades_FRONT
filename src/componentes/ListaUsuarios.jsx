@@ -34,7 +34,6 @@ export default class ListaUsuarios extends React.Component {
            this.setState({usuarios: this.state.usuarios});
         }
     });  
-   // this.setState({usuarios: this.authService.getAllUsuarios()});
 }
     
 
@@ -45,14 +44,13 @@ export default class ListaUsuarios extends React.Component {
 /**
  * Método que establece si se debe mostrar o no el botón para borrar post
  * 
- * @param {*} usuario 
- * @param {*} rolAdmistrador 
- * @param {*} idPost 
+ * @param {*} usuarioConectado es el usuario conectado en la aplicacion
+ * @param {*} usu es el usuario que viene de base de datos
  * @returns 
  */
-    mostrarIconoBorrarUsuario(usuarioConectado, rolAdmistrador, usu){
+    mostrarIconoBorrarUsuario(usuarioConectado, usu){
         let boton;
-        if(usuarioConectado!=null && usuarioConectado.roles.includes(rolAdmistrador)){
+        if(usuarioConectado!=null && usu.apellidos!="Administrador"){
             boton = <span id ="iconoBorrarUsuario"  title="Borrar Usuario" onClick={() => this.eliminarUsuario(usu.idusuario)} className="m-1">
                                         <OverlayTrigger
                                             key={'left'}
@@ -81,19 +79,18 @@ export default class ListaUsuarios extends React.Component {
 
     render() {
         const usuarioConectado = JSON.parse(localStorage.getItem("usuario"));
-        const rol_administrador = "ROLE_ADMINISTRADOR";
         return (
 
 
-            <Table striped hover responsive className="mt-5">
+            <Table striped hover responsive table-condensedclassName="mt-5 col-12">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Email</th>
-                        <th>Teléfono</th>
-                        <th>Dirección</th>
+                        <th className="col-1"></th>
+                        <th className="col-3">Nombre</th>
+                        <th className="col-3">Apellidos</th>
+                        <th className="col-1">Email</th>
+                        <th className="col-1">Teléfono</th>
+                        <th className="col-3">Dirección</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -103,7 +100,7 @@ export default class ListaUsuarios extends React.Component {
                                 <tr>
                                     <td>
                                         <BrowserRouter>
-                                         {this.mostrarIconoBorrarUsuario(usuarioConectado, rol_administrador, usu)}
+                                         {this.mostrarIconoBorrarUsuario(usuarioConectado, usu)}
                                         </BrowserRouter>
                                     </td>
                                     <td>{usu.nombre}</td>
