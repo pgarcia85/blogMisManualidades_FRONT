@@ -1,19 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import {isEmail} from "validator";
 
 import AuthService from "../service/AuthService";
-
-
-const email = value => {
-    if (!isEmail(value)) {
-        return (
-            <div className="alert alert-danger" role="Alert">
-               Introduzca un email valido
-            </div>
-        )
-    }
-}
 
 
 export default class Registro extends React.Component {
@@ -100,7 +88,8 @@ export default class Registro extends React.Component {
                         mensaje: response.data.mensaje,
                         exito:true
                     })
-                  
+                  //borrar los campos del formulario
+                    this.handleBorrarForm();
                 },
                 error => {
                     const resMessage = (error.response && error.response.data &&
@@ -111,8 +100,7 @@ export default class Registro extends React.Component {
                     });
                 }
             );
-            //borrar los campos del formulario
-            this.handleBorrarForm();
+            
     }
 
 
@@ -143,7 +131,8 @@ export default class Registro extends React.Component {
                                 placeholder="Intruzca su nombre"
                                 value={this.state.nombre}
                                 onChange={this.onChangeNombre}
-                                required />
+                                required 
+                                maxLength="45"/>
                         </Form.Group>
                         <Form.Group controlId="apellidos">
                             <Form.Label>Apellidos</Form.Label>
@@ -151,7 +140,8 @@ export default class Registro extends React.Component {
                                 placeholder="Intruzca sus apellidos"
                                 value={this.state.apellidos}
                                 onChange={this.onChangeApellidos}
-                                required />
+                                required 
+                                maxLength="100"/>
                         </Form.Group>
                         <Form.Group controlId="direccion">
                             <Form.Label>Direccion</Form.Label>
@@ -159,7 +149,8 @@ export default class Registro extends React.Component {
                                 placeholder="Intruzca su direccion"
                                 value={this.state.direccion}
                                 onChange={this.onChangeDireccion}
-                                required />
+                                required 
+                                maxLength="100"/>
                         </Form.Group>
                         <Form.Group controlId="email">
                             <Form.Label>Email</Form.Label>
@@ -167,21 +158,24 @@ export default class Registro extends React.Component {
                                 placeholder="Intruzca su email"
                                 value={this.state.email}
                                 onChange={this.onChangeEmail}
-                                required/>
+                                required
+                                maxLength="45"/>
                         </Form.Group>
                         <Form.Group controlId="telefono">
                             <Form.Label>Telefono</Form.Label>
                             <Form.Control type="number" placeholder="Intruzca su número de teléfono"
                                 value={this.state.telefono}
                                 onChange={this.onChangeTelefono}
-                                required />
+                                required 
+                                maxLength="9"/>
                         </Form.Group>
                         <Form.Group controlId="contraseña">
                             <Form.Label>Contraseña</Form.Label>
                             <Form.Control type="password" placeholder="Intruzca su contraseña"
                                 value={this.state.contrasenia}
                                 onChange={this.onChangeContrasenia}
-                                required/>
+                                required
+                                maxLength="10"/>
                         </Form.Group>
                         <Button variant="dark" type="submit" style={{
                             'float': 'right'

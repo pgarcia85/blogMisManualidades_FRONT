@@ -103,7 +103,8 @@ export default class NuevoPost extends React.Component {
                                 placeholder="Titulo Post"
                                 value={this.state.titulo}
                                 onChange={this.onChangeTitulo}
-                                required />
+                                required 
+                                maxLength="100"/>
                         </Form.Group>
                         <Form.Group controlId="resumen">
                             <Form.Label>Resumen</Form.Label>
@@ -111,13 +112,15 @@ export default class NuevoPost extends React.Component {
                                 placeholder="Resumen Post"
                                 value={this.state.resumen}
                                 onChange={this.onChangeResumen}
-                                required/>
+                                required
+                                maxLength="100"/>
                         </Form.Group>
                       
                         <Form.Label>Texto</Form.Label>
                         <CKEditor
                         editor={ ClassicEditor }
-                        data={this.state.texto}                  
+                        data={this.state.texto}   
+                        maxLength="5000"               
                         onChange={ ( event, editor ) => {
                             const data = editor.getData();
                             this.onChangeTexto(data);

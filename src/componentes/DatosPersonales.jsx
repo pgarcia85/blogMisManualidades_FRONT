@@ -113,19 +113,24 @@ export default class DatosPersonales extends React.Component {
                             <Form.Label>Nombre</Form.Label>
                             <Form.Control type="text"
                                 value={this.state.nombre}
-                                onChange={this.onChangeNombre} />
+                                onChange={this.onChangeNombre} 
+                                required
+                                maxLength="45"/>
                         </Form.Group>
                         <Form.Group controlId="apellidos">
                             <Form.Label>Apellidos</Form.Label>
                             <Form.Control type="text"
                                 value={this.state.apellidos}
-                                onChange={this.onChangeApellidos} />
+                                onChange={this.onChangeApellidos} 
+                                required
+                                maxLength="100"/>
                         </Form.Group>
                         <Form.Group controlId="direccion">
                             <Form.Label>Direccion</Form.Label>
                             <Form.Control type="text"
                                 value={this.state.direccion} 
-                                onChange={this.onChangeDireccion}/>
+                                onChange={this.onChangeDireccion}
+                                requiredmaxLength="100"/>
                         </Form.Group>
                         <Form.Group controlId="email">
                             <Form.Label>Email</Form.Label>
@@ -136,7 +141,9 @@ export default class DatosPersonales extends React.Component {
                             <Form.Label>Telefono</Form.Label>
                             <Form.Control type="text"
                                 value={this.state.telefono} 
-                                onChange={this.onChangeTelefono} />
+                                onChange={this.onChangeTelefono} 
+                                required
+                                maxLength="9"/>
                         </Form.Group>
                         <Button variant="dark" type="submit" style={{
                             'float': 'right'
