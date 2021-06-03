@@ -109,7 +109,7 @@ export default class Registro extends React.Component {
             <div className="d-flex flex-column align-items-center">
                 <div className="col-md-8 mt-5">
                 {this.state.mensaje && (
-                    <div className="form-group">
+                    <div className="form-group text-center">
                         <div className={
                             this.state.exito
                             ? "alert alert-success"
