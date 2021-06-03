@@ -25,7 +25,7 @@ export default class ListaUsuarios extends React.Component {
    
     eliminarUsuario(idUsuario) {
         this.authService.eliminarUsuario(idUsuario)
-        //esto es para que se recargue la pagina despues de eliminar el usuario  <FontAwesomeIcon icon={faTrashAlt} />
+        //esto es para que se recargue la pagina despues de eliminar el usuario
        this.state.usuarios.map((usuario, index) => {         
         if(usuario.idusuario===idUsuario){  
             //eliminar el post de la lista la funcion splice nos devuelve el post eliminado     
