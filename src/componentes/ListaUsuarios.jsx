@@ -82,7 +82,7 @@ export default class ListaUsuarios extends React.Component {
         return (
 
 
-            <Table striped hover responsive table-condensedclassName="mt-5 col-12">
+            <Table striped hover responsive table-condensed="true" className="mt-5 col-12">
                 <thead>
                     <tr>
                         <th className="col-1"></th>
@@ -97,7 +97,7 @@ export default class ListaUsuarios extends React.Component {
                     {
                         this.state.usuarios.map((usu) => {
                             return (
-                                <tr>
+                                <tr key={usu.email}>
                                     <td>
                                         <BrowserRouter>
                                          {this.mostrarIconoBorrarUsuario(usuarioConectado, usu)}
